@@ -25,8 +25,16 @@ const deleteTask = async (id) => {
     process.exit(0);
 }
 
+const updateTask = async (id, title, description) => {
+    await Task.findByIdAndUpdate(id, {title, description});
+    console.log('Task Updated');
+    await connection.close();
+    process.exit(0);
+}
+
 module.exports = {
     addTask,
     listTasks,
-    deleteTask
+    deleteTask,
+    updateTask
 }
