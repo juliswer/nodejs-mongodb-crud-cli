@@ -21,15 +21,15 @@ program.command('save').action(async () => {
     addTask(answers);
 });
 
-program.command('list').action(() => {
+program.command('list').alias('l').action(() => {
     listTasks();
 })
 
-program.command('delete <id>').action((id) => {
+program.command('delete <id>').alias('d').action((id) => {
     deleteTask(id);
 })
 
-program.command('update <id>').action(async (id) => {
+program.command('update <id>').alias('u').action(async (id) => {
     const answers = await prompt([
         {
             type: 'input',
