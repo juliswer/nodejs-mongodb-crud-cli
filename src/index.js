@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 require('./commands');
 const {connectDB} = require('./db');
 
