@@ -1,6 +1,6 @@
 const {program} = require('commander');
 const {prompt} = require('inquirer');
-const {addTask, listTasks, deleteTask, updateTask} = require('./controllers/task.controllers');
+const {addTask, listTasks, deleteTask, updateTask, findTask} = require('./controllers/task.controllers');
 
 program.version('0.0.1').description('A command line tool for managing your projects');
 
@@ -44,6 +44,10 @@ program.command('update <id>').alias('u').action(async (id) => {
     ]);
 
     updateTask(id, answers.title, answers.description);
+})
+
+program.command('find <task>').alias('f').action((text) => {
+    findTask(text);
 })
 
 program.parse(process.argv);

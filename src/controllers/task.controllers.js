@@ -7,6 +7,16 @@ const addTask = async (task) => {
     await connection.close();
 }
 
+const findTask = async (text) => {
+    const search = new RegExp(text, "i");
+
+    const tasks = await Task.find({
+        $or: [{title: search}, {description: search}]
+    })
+
+    console.log(tasks)
+}
+
 const listTasks = async () => {
     const tasks = await Task.find().lean();
     console.table(tasks.map(task => ({
@@ -36,5 +46,6 @@ module.exports = {
     addTask,
     listTasks,
     deleteTask,
-    updateTask
+    updateTask,
+    findTask
 }
