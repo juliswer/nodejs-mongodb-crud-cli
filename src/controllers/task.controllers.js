@@ -14,6 +14,8 @@ const listTasks = async () => {
         title: task.title,
         description: task.description,
     })));
+    await connection.close();
+    process.exit(0);
 };
 
 module.exports = {
