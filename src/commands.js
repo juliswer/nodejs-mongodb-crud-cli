@@ -4,7 +4,7 @@ const {addTask, listTasks, deleteTask, updateTask, findTask} = require('./contro
 
 program.version('0.0.1').description('A command line tool for managing your projects');
 
-program.command('save').action(async () => {
+program.command('save').alias('s').action(async () => {
     const answers = await prompt([
         {
             type: 'input',
