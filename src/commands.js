@@ -1,6 +1,6 @@
 const {program} = require('commander');
 const {prompt} = require('inquirer');
-const {addTask} = require('./controllers/task.controllers');
+const {addTask, listTasks} = require('./controllers/task.controllers');
 
 program.version('0.0.1').description('A command line tool for managing your projects');
 
@@ -20,5 +20,9 @@ program.command('save').action(async () => {
 
     addTask(answers);
 });
+
+program.command('list').action(() => {
+    listTasks();
+})
 
 program.parse(process.argv);
