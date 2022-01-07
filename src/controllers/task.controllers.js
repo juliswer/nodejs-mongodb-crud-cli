@@ -18,7 +18,15 @@ const listTasks = async () => {
     process.exit(0);
 };
 
+const deleteTask = async (id) => {
+    await Task.findByIdAndDelete(id);
+    console.log('Task Deleted');
+    await connection.close();
+    process.exit(0);
+}
+
 module.exports = {
     addTask,
-    listTasks
+    listTasks,
+    deleteTask
 }
