@@ -8,8 +8,12 @@ const addTask = async (task) => {
 }
 
 const listTasks = async () => {
-    const tasks = await Task.find();
-    console.log(tasks);
+    const tasks = await Task.find().lean();
+    console.table(tasks.map(task => ({
+        id: task._id.toString(),
+        title: task.title,
+        description: task.description,
+    })));
 };
 
 module.exports = {
